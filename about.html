@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Augustin Nayagam - Computer Science Student & Web Developer Portfolio. High-energy glassmorphism and neon glowing creative portfolio.">
+    <title>About Me | Augustin Nayagam</title>
+
+    <!-- Google Fonts: Outfit, Space Grotesk, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ===== AMBIENT GLOWING ORBS ===== -->
+    <div class="ambient-orbs" aria-hidden="true">
+        <div class="orb orb-cyan"></div>
+        <div class="orb orb-pink"></div>
+        <div class="orb orb-purple"></div>
+        <div class="orb orb-lime"></div>
+        <div class="orb orb-amber"></div>
+    </div>
+
+    <!-- ===== CYBER GRID & SCANLINE EFFECT ===== -->
+    <div class="cyber-grid" aria-hidden="true"></div>
+
+    <!-- ===== INTERACTIVE CURSOR SPOTLIGHT ===== -->
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+    <!-- ===== GLASS HEADER ===== -->
+    <header class="header" id="header">
+        <div class="header-inner glass-card">
+            <a href="index.html" class="brand">
+                <span class="brand-text">Augustin Nayagam</span>
+                <span class="brand-dot"></span>
+            </a>
+
+            <nav class="desktop-nav" id="desktop-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="skills.html" class="nav-link">Skills</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="experience.html" class="nav-link">Experience</a>
+                <a href="education.html" class="nav-link">Education</a>
+                <a href="certificates.html" class="nav-link">Certificates</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="header-right">
+                <button id="theme-toggle" class="theme-toggle glass-btn" aria-label="Toggle theme">
+                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                </button>
+                <button class="burger glass-btn" id="burger" aria-label="Toggle navigation">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MOBILE DRAWER ===== -->
+    <div class="drawer glass-card" id="drawer">
+        <div class="drawer-header">
+            <a href="index.html" class="brand">
+                <span class="brand-dot"></span>
+                <span class="brand-text">Augustin Nayagam A</span>
+            </a>
+            <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+        </div>
+        <nav class="drawer-links">
+            <a href="index.html" class="drawer-link"><span class="neon-num">01</span> Home</a>
+            <a href="about.html" class="drawer-link"><span class="neon-num">02</span> About</a>
+            <a href="skills.html" class="drawer-link"><span class="neon-num">03</span> Skills</a>
+            <a href="projects.html" class="drawer-link"><span class="neon-num">04</span> Projects</a>
+            <a href="experience.html" class="drawer-link"><span class="neon-num">05</span> Experience</a>
+            <a href="education.html" class="drawer-link"><span class="neon-num">06</span> Education</a>
+            <a href="certificates.html" class="drawer-link"><span class="neon-num">07</span> Certificates</a>
+            <a href="contact.html" class="drawer-link"><span class="neon-num">08</span> Contact</a>
+        </nav>
+    </div>
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+
+    <main id="main">
+
+        <!-- ===== ABOUT SECTION ===== -->
+        <section id="about" class="sec">
+            <div class="wrap">
+                <div class="section-tag reveal">
+                    <span class="tag-num">01</span>
+                    <span class="tag-line"></span>
+                    <span class="tag-label">ABOUT ME</span>
+                </div>
+
+                <h2 class="section-title reveal">Transforming Logic into <span class="neon-highlight-cyan">Impactful
+                        Code</span></h2>
+
+                <div class="about-grid">
+                    <div class="about-quote-card glass-card reveal">
+                        <div class="card-glow-layer cyan-glow"></div>
+                        <div class="quote-mark">"</div>
+                        <blockquote class="about-statement">
+                            I am a Computer Science student interested in web development, software engineering, and
+                            database-driven applications.
+                        </blockquote>
+                        <p class="about-text">
+                            I enjoy turning ideas into practical software solutions and continuously improving my
+                            programming and development skills.
+                        </p>
+                        <p class="about-text">
+                            My current interests include front-end development, Java-based applications, databases, and
+                            modern web technologies.
+                        </p>
+                    </div>
+
+                    <div class="about-facts-container">
+                        <div class="fact-card glass-card reveal f-cyan">
+                            <div class="fact-icon-wrap">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                                </svg>
+                            </div>
+                            <div class="fact-info">
+                                <span class="fact-title">Core Focus</span>
+                                <strong class="fact-value">Web Development</strong>
+                            </div>
+                        </div>
+
+                        <div class="fact-card glass-card reveal f-pink">
+                            <div class="fact-icon-wrap">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                                </svg>
+                            </div>
+                            <div class="fact-info">
+                                <span class="fact-title">Degree</span>
+                                <strong class="fact-value">B.Sc. Computer Science</strong>
+                            </div>
+                        </div>
+
+                        <div class="fact-card glass-card reveal f-lime">
+                            <div class="fact-icon-wrap">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                            </div>
+                            <div class="fact-info">
+                                <span class="fact-title">Location</span>
+                                <strong class="fact-value">Hosur, Tamil Nadu</strong>
+                            </div>
+                        </div>
+
+                        <div class="fact-card glass-card reveal f-purple">
+                            <div class="fact-icon-wrap">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                            </div>
+                            <div class="fact-info">
+                                <span class="fact-title">Pursuing</span>
+                                <strong class="fact-value">Full-Stack Development</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="wrap footer-content glass-card">
+            <p class="footer-copy">© <span id="year"></span> Augustin Nayagam</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
