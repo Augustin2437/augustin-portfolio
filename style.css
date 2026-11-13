@@ -1,0 +1,13 @@
+/* ==========================================================================
+   AUGUSTIN NAYAGAM — PORTFOLIO MAIN BUNDLE (style.css)
+   Modular bundle importing common foundations and individual page styles.
+   ========================================================================== */
+@import url("common.css");
+@import url("index.css");
+@import url("about.css");
+@import url("skills.css");
+@import url("projects.css");
+@import url("experience.css");
+@import url("education.css");
+@import url("certificates.css");
+@import url("contact.css");

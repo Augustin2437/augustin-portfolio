@@ -1,0 +1,206 @@
+/* ==========================================================================
+   AUGUSTIN NAYAGAM — PROJECTS PAGE & FEATURED CARDS STYLESHEET (projects.css)
+   High-energy gaming project cards, glowing badges, tech tags, action links.
+   ========================================================================== */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 28px;
+}
+
+.project-glass-card {
+    padding: 34px 30px;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-lg);
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    transition: var(--transition);
+    position: relative;
+}
+
+.project-glass-card:hover {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), var(--glow-cyan);
+    transform: translateY(-5px);
+}
+
+body.light-theme .project-glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--border-card);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+body.light-theme .project-glass-card:hover {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 15px 35px rgba(2, 132, 199, 0.18);
+}
+
+.project-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.project-category-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    background: rgba(0, 242, 254, 0.10);
+    border: 1px solid rgba(0, 242, 254, 0.35);
+    color: var(--neon-cyan);
+    box-shadow: 0 0 14px rgba(0, 242, 254, 0.18);
+}
+
+body.light-theme .project-category-badge {
+    background: rgba(2, 132, 199, 0.10);
+    border-color: rgba(2, 132, 199, 0.35);
+    color: #0284c7;
+    box-shadow: 0 0 10px rgba(2, 132, 199, 0.15);
+}
+
+.project-index {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: var(--neon-cyan);
+    opacity: 0.85;
+    text-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
+}
+
+body.light-theme .project-index {
+    color: #0284c7;
+    text-shadow: none;
+    opacity: 0.9;
+}
+
+.project-title {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1.35;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+    transition: color 0.25s ease;
+}
+
+.project-glass-card:hover .project-title {
+    color: var(--neon-cyan);
+}
+
+.project-desc {
+    font-size: 0.98rem;
+    color: var(--text-secondary);
+    line-height: 1.68;
+    margin-bottom: 24px;
+    flex-grow: 1;
+}
+
+.project-tech-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 26px;
+}
+
+.tech-pill {
+    padding: 5px 13px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-card);
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.project-glass-card:hover .tech-pill {
+    border-color: rgba(0, 242, 254, 0.3);
+    color: var(--text-primary);
+}
+
+body.light-theme .tech-pill {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    color: #334155;
+}
+
+body.light-theme .project-glass-card:hover .tech-pill {
+    border-color: rgba(2, 132, 199, 0.4);
+    color: #0f172a;
+}
+
+.project-actions {
+    display: flex;
+    align-items: center;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-card);
+    margin-top: auto;
+}
+
+.project-neon-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 0.92rem;
+    color: var(--neon-cyan);
+    background: rgba(0, 242, 254, 0.08);
+    border: 1px solid rgba(0, 242, 254, 0.35);
+    box-shadow: 0 0 14px rgba(0, 242, 254, 0.15);
+    transition: var(--transition);
+}
+
+.project-neon-link svg {
+    transition: transform 0.25s ease;
+}
+
+.project-neon-link:hover {
+    color: #070913;
+    background: var(--neon-cyan);
+    box-shadow: 0 0 22px rgba(0, 242, 254, 0.6);
+    transform: translateY(-2px);
+}
+
+.project-neon-link:hover svg {
+    transform: translate(2px, -2px);
+}
+
+body.light-theme .project-neon-link {
+    background: rgba(2, 132, 199, 0.08);
+    border: 1px solid rgba(2, 132, 199, 0.35);
+    color: #0284c7;
+    box-shadow: 0 0 10px rgba(2, 132, 199, 0.15);
+}
+
+body.light-theme .project-neon-link:hover {
+    color: #ffffff;
+    background: var(--neon-cyan);
+    box-shadow: 0 0 18px rgba(2, 132, 199, 0.35);
+}
+
+/* ---------- Responsive Breakpoints for Projects ---------- */
+@media (max-width: 992px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-glass-card {
+        padding: 24px 20px;
+    }
+}

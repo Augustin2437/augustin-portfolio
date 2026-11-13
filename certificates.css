@@ -1,0 +1,292 @@
+/* ==========================================================================
+   AUGUSTIN NAYAGAM — CERTIFICATES PAGE STYLESHEET (certificates.css)
+   Verified achievement cards, issuer badges, and full-screen preview lightbox.
+   ========================================================================== */
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 26px;
+}
+
+.cert-glass-card {
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    border-radius: var(--radius-lg);
+}
+
+.cert-card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.cert-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.cert-badge-wrapper {
+    flex-shrink: 0;
+}
+
+.cert-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    font-size: 1.5rem;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-card);
+    transition: var(--transition);
+}
+
+.cert-glass-card:hover .cert-badge {
+    border-color: var(--neon-cyan);
+    background: rgba(0, 242, 254, 0.15);
+    box-shadow: var(--glow-cyan);
+    transform: scale(1.08) rotate(3deg);
+}
+
+body.light-theme .cert-glass-card:hover .cert-badge {
+    background: rgba(2, 132, 199, 0.12);
+}
+
+.cert-meta {
+    flex: 1;
+    min-width: 0;
+}
+
+.cert-category-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    margin-bottom: 6px;
+    background: rgba(0, 242, 254, 0.12);
+    border: 1px solid var(--border-color);
+    color: var(--neon-cyan);
+}
+
+.cert-title {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    line-height: 1.35;
+}
+
+.cert-issuer {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    margin-bottom: 2px;
+    font-weight: 600;
+}
+
+.cert-date {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.cert-desc {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 14px 0 22px;
+    flex: 1;
+}
+
+.cert-view-action {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-card);
+}
+
+.cert-view-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-heading);
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    transition: var(--transition);
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    background: rgba(0, 242, 254, 0.08);
+    cursor: pointer;
+}
+
+.cert-view-btn:hover {
+    color: #070913;
+    border-color: var(--neon-cyan);
+    background: linear-gradient(135deg, var(--neon-cyan), #38bdf8);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.6);
+    transform: translateY(-2px);
+}
+
+body.light-theme .cert-view-btn {
+    background: rgba(2, 132, 199, 0.08);
+    color: var(--neon-cyan);
+    border-color: rgba(2, 132, 199, 0.35);
+}
+
+body.light-theme .cert-view-btn:hover {
+    color: #ffffff;
+    background: var(--neon-cyan);
+}
+
+/* Certificate Lightbox Modal */
+.cert-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.cert-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cert-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 9, 18, 0.94);
+    backdrop-filter: blur(10px);
+}
+
+.cert-modal-dialog {
+    position: relative;
+    z-index: 1;
+    max-width: 920px;
+    width: 100%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-surface);
+    border: 1px solid var(--neon-cyan);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 50px rgba(0, 242, 254, 0.35);
+    overflow: hidden;
+    transform: scale(0.96);
+    transition: transform 0.25s ease;
+}
+
+body.light-theme .cert-modal-dialog {
+    background: #ffffff;
+    border-color: var(--neon-cyan);
+    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.25);
+}
+
+.cert-modal.active .cert-modal-dialog {
+    transform: scale(1);
+}
+
+.cert-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border-card);
+    background: var(--bg-card);
+}
+
+body.light-theme .cert-modal-header {
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.cert-modal-title-group h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.cert-modal-title-group p {
+    font-size: 0.85rem;
+    color: var(--neon-cyan);
+    font-family: var(--font-mono);
+    font-weight: 600;
+}
+
+.cert-modal-close {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-card);
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    line-height: 1;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+body.light-theme .cert-modal-close {
+    background: #f1f5f9;
+    color: #0f172a;
+    border-color: #cbd5e1;
+}
+
+.cert-modal-close:hover {
+    color: #ffffff;
+    border-color: var(--neon-pink);
+    background: rgba(236, 72, 153, 0.25);
+    box-shadow: 0 0 15px var(--neon-pink);
+}
+
+.cert-modal-body {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    max-height: calc(90vh - 120px);
+    background: #04060b;
+}
+
+body.light-theme .cert-modal-body {
+    background: #f1f5f9;
+}
+
+.cert-modal-img {
+    max-width: 100%;
+    max-height: 72vh;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.85);
+}
+
+/* ---------- Responsive Breakpoints for Certificates ---------- */
+@media (max-width: 992px) {
+    .certificates-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

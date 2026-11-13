@@ -1,0 +1,103 @@
+/* ==========================================================================
+   AUGUSTIN NAYAGAM — ABOUT PAGE STYLESHEET (about.css)
+   Player profile quote card, statements, and stat/fact breakdown blocks.
+   ========================================================================== */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 28px;
+}
+
+.about-quote-card {
+    padding: 40px;
+    position: relative;
+    border-radius: var(--radius-lg);
+}
+
+.quote-mark {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--neon-cyan);
+    margin-bottom: -15px;
+    text-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+}
+
+.about-statement {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--text-primary);
+    margin-bottom: 22px;
+}
+
+.about-text {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.7;
+}
+
+.about-facts-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.fact-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px 24px;
+    border-radius: var(--radius-md);
+}
+
+.fact-icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: rgba(0, 242, 254, 0.12);
+    color: var(--neon-cyan);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 0 12px rgba(0, 242, 254, 0.25);
+}
+
+.fact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.fact-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.fact-value {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+/* ---------- Responsive Breakpoints for About ---------- */
+@media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-quote-card {
+        padding: 26px 20px;
+    }
+}
+

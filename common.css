@@ -1,0 +1,1177 @@
+/* ==========================================================================
+   AUGUSTIN NAYAGAM — COMMON & CORE STYLESHEET
+   Shared tokens, reset, typography, header, drawer, cards, buttons, footer.
+   ========================================================================== */
+
+/* ---------- Design Tokens ---------- */
+:root {
+    /* Color Palette - Dark Gaming Theme */
+    --bg-base: #070913;
+    --bg-surface: #0c1020;
+    --bg-surface-elevated: #121830;
+    --bg-card: rgba(14, 19, 36, 0.82);
+    --bg-card-hover: rgba(20, 28, 52, 0.94);
+    --bg-subtle: #19223c;
+
+    /* Neon Accents */
+    --neon-cyan: #00f2fe;
+    --neon-blue: #38bdf8;
+    --neon-indigo: #6366f1;
+    --neon-purple: #a855f7;
+    --neon-pink: #ec4899;
+    --neon-green: #00f5a0;
+    --neon-amber: #f59e0b;
+
+    /* Neon Glows */
+    --glow-cyan: 0 0 25px rgba(0, 242, 254, 0.45);
+    --glow-cyan-intense: 0 0 35px rgba(0, 242, 254, 0.7), 0 0 60px rgba(0, 242, 254, 0.3);
+    --glow-purple: 0 0 25px rgba(168, 85, 247, 0.45);
+    --glow-green: 0 0 18px rgba(0, 245, 160, 0.55);
+    --glow-card: 0 0 30px rgba(0, 242, 254, 0.25), 0 20px 40px rgba(0, 0, 0, 0.7);
+
+    /* Borders */
+    --border-color: rgba(0, 242, 254, 0.22);
+    --border-card: rgba(255, 255, 255, 0.09);
+    --border-hover: rgba(0, 242, 254, 0.7);
+
+    /* Text */
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    /* Fonts */
+    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-body: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', Consolas, Monaco, monospace;
+
+    /* Radii */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 26px;
+    --radius-pill: 9999px;
+
+    --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Light Theme (Cyber Crisp / High Contrast) */
+body.light-theme {
+    --bg-base: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-surface-elevated: #f1f5f9;
+    --bg-card: rgba(255, 255, 255, 0.94);
+    --bg-card-hover: #ffffff;
+    --bg-subtle: #e2e8f0;
+
+    --neon-cyan: #0284c7;
+    --neon-purple: #7c3aed;
+    --neon-green: #059669;
+    --neon-pink: #db2777;
+    --neon-amber: #d97706;
+    --neon-indigo: #4338ca;
+
+    --border-color: rgba(2, 132, 199, 0.28);
+    --border-card: #e2e8f0;
+    --border-hover: #0284c7;
+
+    --glow-cyan: 0 0 16px rgba(2, 132, 199, 0.2);
+    --glow-cyan-intense: 0 0 25px rgba(2, 132, 199, 0.35);
+    --glow-purple: 0 0 16px rgba(124, 58, 237, 0.2);
+    --glow-green: 0 0 16px rgba(5, 150, 105, 0.25);
+    --glow-card: 0 12px 32px rgba(15, 23, 42, 0.08), 0 0 20px rgba(2, 132, 199, 0.12);
+
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+
+    color-scheme: light;
+    background-color: var(--bg-base);
+    background-image: 
+        linear-gradient(to right, rgba(2, 132, 199, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(2, 132, 199, 0.045) 1px, transparent 1px),
+        radial-gradient(ellipse 90% 60% at 50% -15%, rgba(2, 132, 199, 0.10), transparent 65%),
+        radial-gradient(circle at 95% 35%, rgba(124, 58, 237, 0.06), transparent 45%),
+        radial-gradient(circle at 5% 75%, rgba(67, 56, 202, 0.06), transparent 45%);
+    background-size: 52px 52px, 52px 52px, auto, auto, auto;
+}
+
+/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    color-scheme: dark;
+}
+
+body.light-theme {
+    color-scheme: light;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-base);
+    background-image: 
+        linear-gradient(to right, rgba(0, 242, 254, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 242, 254, 0.035) 1px, transparent 1px),
+        radial-gradient(ellipse 90% 60% at 50% -15%, rgba(0, 242, 254, 0.16), transparent 65%),
+        radial-gradient(circle at 95% 35%, rgba(168, 85, 247, 0.12), transparent 45%),
+        radial-gradient(circle at 5% 75%, rgba(99, 102, 241, 0.14), transparent 45%);
+    background-size: 52px 52px, 52px 52px, auto, auto, auto;
+    background-attachment: fixed;
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ---------- Static High-Definition Vector Background Artwork Layer ---------- */
+.bg-shapes-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+}
+
+.bg-art-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    transform: translateZ(0);
+}
+
+/* Base Full Shape Styling (Dark Mode Defaults) */
+.full-shape {
+    transition: fill-opacity 0.3s ease, stroke-opacity 0.3s ease, filter 0.3s ease;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.45));
+}
+
+.shape-fill-glass {
+    fill-opacity: 0.16;
+}
+
+.shape-stroke-bold {
+    stroke-width: 3.5px;
+    stroke-opacity: 0.88;
+}
+
+.shape-inner-accent {
+    stroke-width: 1.5px;
+    stroke-opacity: 0.45;
+    stroke-dasharray: 6 5;
+    fill: none;
+}
+
+.art-text-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    fill-opacity: 0.45;
+    user-select: none;
+}
+
+/* Light Theme Adaptability for Full Geometric Shapes */
+body.light-theme .full-shape {
+    filter: drop-shadow(0 8px 24px rgba(15, 23, 42, 0.12));
+}
+
+body.light-theme .shape-fill-glass {
+    fill-opacity: 0.28;
+}
+
+body.light-theme .shape-stroke-bold {
+    stroke-width: 3px;
+    stroke-opacity: 0.95;
+}
+
+body.light-theme .shape-inner-accent {
+    stroke-opacity: 0.60;
+    stroke-width: 1.8px;
+}
+
+body.light-theme .art-text-label {
+    fill: var(--text-secondary);
+    fill-opacity: 0.75;
+    font-weight: 800;
+}
+
+body.light-theme [stroke="#00f2fe"] { stroke: #0284c7; }
+body.light-theme [fill="#00f2fe"] { fill: #0284c7; }
+body.light-theme [stroke="#facc15"] { stroke: #d97706; }
+body.light-theme [fill="#facc15"] { fill: #d97706; }
+body.light-theme [stroke="#00f5a0"] { stroke: #059669; }
+body.light-theme [fill="#00f5a0"] { fill: #059669; }
+body.light-theme [stroke="#38bdf8"] { stroke: #0284c7; }
+body.light-theme [fill="#38bdf8"] { fill: #0284c7; }
+body.light-theme [stroke="#c084fc"] { stroke: #7c3aed; }
+body.light-theme [fill="#c084fc"] { fill: #7c3aed; }
+body.light-theme [stroke="#84cc16"] { stroke: #4d7c0f; }
+body.light-theme [fill="#84cc16"] { fill: #4d7c0f; }
+
+/* ==========================================================================
+   PER-PAGE COLORFUL THEMES & GRADIENT MESHES (DARK & LIGHT ADAPTATION)
+   ========================================================================== */
+
+/* 1. HOME / NEXUS (Electric Cyan & Neon Violet) */
+body.page-index {
+    background-color: #070914;
+    background-image: 
+        radial-gradient(ellipse 90% 65% at 50% -10%, rgba(0, 242, 254, 0.18), transparent 70%),
+        radial-gradient(circle at 92% 38%, rgba(139, 92, 246, 0.16), transparent 50%),
+        radial-gradient(circle at 6% 75%, rgba(99, 102, 241, 0.14), transparent 50%);
+    background-attachment: fixed;
+    background-size: cover;
+}
+body.light-theme.page-index {
+    background-color: #f0f9ff;
+    background-image: 
+        radial-gradient(ellipse 90% 65% at 50% -10%, rgba(2, 132, 199, 0.15), transparent 70%),
+        radial-gradient(circle at 92% 38%, rgba(99, 102, 241, 0.12), transparent 50%),
+        radial-gradient(circle at 6% 75%, rgba(14, 165, 233, 0.10), transparent 50%);
+}
+
+/* 2. ABOUT / BIO-CIRCUIT (Radiant Emerald & Cyber Mint) */
+body.page-about {
+    background-color: #050e0c;
+    background-image: 
+        radial-gradient(ellipse 90% 65% at 45% -10%, rgba(16, 185, 129, 0.20), transparent 70%),
+        radial-gradient(circle at 95% 40%, rgba(0, 245, 160, 0.16), transparent 50%),
+        radial-gradient(circle at 5% 70%, rgba(13, 148, 136, 0.18), transparent 50%);
+    background-attachment: fixed;
+    background-size: cover;
+}
+body.light-theme.page-about {
+    background-color: #f0fdf4;
+    background-image: 
+        radial-gradient(ellipse 90% 65% at 45% -10%, rgba(5, 150, 105, 0.16), transparent 70%),
+        radial-gradient(circle at 95% 40%, rgba(13, 148, 136, 0.14), transparent 50%),
+        radial-gradient(circle at 5% 70%, rgba(16, 185, 129, 0.12), transparent 50%);
+}
+
+/* 3. SKILLS / ARC REACTOR (Amber Plasma & Cyber Tangerine) */
+body.page-skills {
+    background-color: #120a04;
+    background-image: 
+        radial-gradient(ellipse 90% 65% at 50% -10%, rgba(249, 115, 22, 0.20), transparent 70%),
+        radial-gradient(circle at 92% 35%, rgba(245, 158, 11, 0.18), transparent 50%),
+        radial-gradient(circle at 8% 75%, rgba(234, 179, 8, 0.15), transparent 50%);
+    background-attachment: fixed;
+    background-size: cover;
+}
+body.light-theme.page-skills {
+    background-color: #fffbeb;
+    background-image: 
+        radial-gradient(ellipse 90% 65% at 50% -10%, rgba(217, 119, 6, 0.16), transparent 70%),
+        radial-gradient(circle at 92% 35%, rgba(234, 88, 12, 0.14), transparent 50%),
+        radial-gradient(circle at 8% 75%, rgba(245, 158, 11, 0.12), transparent 50%);
+}
+
+/* 4. PROJECTS / BLUEPRINT (Hyper Neon Pink & Electric Cyan) */
+body.page-projects {
+    background-color: #120516;
+    background-image: 
+        radial-gradient(ellipse 90% 65% at 50% -10%, rgba(236, 72, 153, 0.22), transparent 70%),
+        radial-gradient(circle at 95% 35%, rgba(217, 70, 239, 0.18), transparent 50%),
+        radial-gradient(circle at 5% 75%, rgba(0, 242, 254, 0.15), transparent 50%);
+    background-attachment: fixed;
+    background-size: cover;
+}
+body.light-theme.page-projects {
+    background-color: #fdf2f8;
+    background-image: 
+        radial-gradient(ellipse 90% 65% at 50% -10%, rgba(225, 29, 72, 0.16), transparent 70%),
+        radial-gradient(circle at 95% 35%, rgba(192, 38, 211, 0.14), transparent 50%),
+        radial-gradient(circle at 5% 75%, rgba(2, 132, 199, 0.12), transparent 50%);
+}
+
+/* 5. EXPERIENCE / VELOCITY (Royal Cobalt & Electric Azure) */
+body.page-experience {
+    background-color: #060918;
+    background-image: 
+        radial-gradient(ellipse 90% 65% at 50% -10%, rgba(37, 99, 235, 0.22), transparent 70%),
+        radial-gradient(circle at 92% 40%, rgba(56, 189, 248, 0.18), transparent 50%),
+        radial-gradient(circle at 8% 75%, rgba(99, 102, 241, 0.16), transparent 50%);
+    background-attachment: fixed;
+    background-size: cover;
+}
+body.light-theme.page-experience {
+    background-color: #eff6ff;
+    background-image: 
+        radial-gradient(ellipse 90% 65% at 50% -10%, rgba(29, 78, 216, 0.16), transparent 70%),
+        radial-gradient(circle at 92% 40%, rgba(2, 132, 199, 0.14), transparent 50%),
+        radial-gradient(circle at 8% 75%, rgba(79, 70, 229, 0.12), transparent 50%);
+}
+
+/* 6. EDUCATION / AMETHYST (Electric Violet & Deep Orchid) */
+body.page-education {
+    background-color: #0d061a;
+    background-image: 
+        radial-gradient(ellipse 90% 65% at 50% -10%, rgba(139, 92, 246, 0.22), transparent 70%),
+        radial-gradient(circle at 95% 35%, rgba(124, 58, 237, 0.18), transparent 50%),
+        radial-gradient(circle at 5% 75%, rgba(192, 132, 252, 0.15), transparent 50%);
+    background-attachment: fixed;
+    background-size: cover;
+}
+body.light-theme.page-education {
+    background-color: #faf5ff;
+    background-image: 
+        radial-gradient(ellipse 90% 65% at 50% -10%, rgba(109, 40, 217, 0.16), transparent 70%),
+        radial-gradient(circle at 95% 35%, rgba(126, 34, 206, 0.14), transparent 50%),
+        radial-gradient(circle at 5% 75%, rgba(147, 51, 234, 0.12), transparent 50%);
+}
+
+/* 7. CERTIFICATES / GOLD TROPHY (Imperial Gold & Laser Amber) */
+body.page-certificates {
+    background-color: #141005;
+    background-image: 
+        radial-gradient(ellipse 90% 65% at 50% -10%, rgba(234, 179, 8, 0.22), transparent 70%),
+        radial-gradient(circle at 92% 38%, rgba(245, 158, 11, 0.18), transparent 50%),
+        radial-gradient(circle at 8% 75%, rgba(16, 185, 129, 0.15), transparent 50%);
+    background-attachment: fixed;
+    background-size: cover;
+}
+body.light-theme.page-certificates {
+    background-color: #fefce8;
+    background-image: 
+        radial-gradient(ellipse 90% 65% at 50% -10%, rgba(202, 138, 4, 0.16), transparent 70%),
+        radial-gradient(circle at 92% 38%, rgba(180, 83, 9, 0.14), transparent 50%),
+        radial-gradient(circle at 8% 75%, rgba(5, 150, 105, 0.12), transparent 50%);
+}
+
+/* 8. CONTACT / NEURAL SATELLITE (Coral Crimson & Neon Turquoise) */
+body.page-contact {
+    background-color: #15060d;
+    background-image: 
+        radial-gradient(ellipse 90% 65% at 50% -10%, rgba(255, 71, 87, 0.22), transparent 70%),
+        radial-gradient(circle at 95% 35%, rgba(0, 242, 254, 0.18), transparent 50%),
+        radial-gradient(circle at 5% 75%, rgba(168, 85, 247, 0.16), transparent 50%);
+    background-attachment: fixed;
+    background-size: cover;
+}
+body.light-theme.page-contact {
+    background-color: #fff1f2;
+    background-image: 
+        radial-gradient(ellipse 90% 65% at 50% -10%, rgba(220, 38, 38, 0.16), transparent 70%),
+        radial-gradient(circle at 95% 35%, rgba(2, 132, 199, 0.14), transparent 50%),
+        radial-gradient(circle at 5% 75%, rgba(219, 39, 119, 0.12), transparent 50%);
+}
+
+::selection {
+    background: var(--neon-cyan);
+    color: #ffffff;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--neon-cyan);
+    outline-offset: 3px;
+    box-shadow: var(--glow-cyan);
+    border-radius: var(--radius-sm);
+}
+
+/* ---------- Layout & Grid ---------- */
+.wrap {
+    width: min(1160px, 92%);
+    margin: 0 auto;
+}
+
+.sec {
+    padding: 105px 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* ---------- 3D Mouse Reactive Neon Cards ---------- */
+.glass-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease-out;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+/* Neon Top Border Accent */
+.glass-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--neon-purple), transparent);
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.glass-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: var(--glow-card);
+}
+
+.glass-card:hover::after {
+    opacity: 1;
+}
+
+body.light-theme .glass-card {
+    box-shadow: 0 8px 26px rgba(15, 23, 42, 0.06);
+}
+
+/* Ensure contents stay above card background */
+.glass-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* ---------- Header (Fixed Neon Launcher Bar) ---------- */
+.header {
+    position: fixed;
+    top: 14px;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.header-inner {
+    width: min(1200px, 95%);
+    margin: 0 auto;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    pointer-events: auto;
+    border-radius: var(--radius-pill);
+    background: rgba(10, 14, 28, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+body.light-theme .header-inner {
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    color: var(--text-primary);
+}
+
+.brand-text {
+    color: var(--text-primary);
+}
+
+.brand-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 0.92rem;
+    box-shadow: 0 0 14px rgba(0, 242, 254, 0.55);
+}
+
+.brand-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--neon-green);
+    border-radius: 50%;
+    box-shadow: var(--glow-green);
+    display: inline-block;
+    animation: neonBlink 2.5s infinite alternate;
+}
+
+@keyframes neonBlink {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: var(--glow-green);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.25);
+        box-shadow: 0 0 16px var(--neon-cyan);
+    }
+}
+
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav-link {
+    font-family: var(--font-heading);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding: 7px 15px;
+    border-radius: var(--radius-pill);
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    color: var(--neon-cyan);
+    background: rgba(0, 242, 254, 0.12);
+    box-shadow: 0 0 12px rgba(0, 242, 254, 0.25);
+}
+
+body.light-theme .nav-link:hover {
+    color: var(--neon-cyan);
+    background: rgba(2, 132, 199, 0.1);
+}
+
+.nav-link.active {
+    color: #070913;
+    background: linear-gradient(135deg, var(--neon-cyan), #38bdf8);
+    font-weight: 800;
+    box-shadow: 0 0 18px rgba(0, 242, 254, 0.6);
+}
+
+body.light-theme .nav-link.active {
+    color: #ffffff;
+    background: var(--neon-cyan);
+    box-shadow: 0 0 16px rgba(2, 132, 199, 0.35);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme-toggle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    color: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    box-shadow: var(--glow-cyan);
+}
+
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+    position: absolute;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.theme-toggle .icon-sun {
+    opacity: 1;
+    transform: rotate(0);
+    color: #f59e0b;
+}
+
+.theme-toggle .icon-moon {
+    opacity: 0;
+    transform: rotate(90deg);
+}
+
+body.light-theme .theme-toggle .icon-sun {
+    opacity: 0;
+    transform: rotate(-90deg);
+}
+
+body.light-theme .theme-toggle .icon-moon {
+    opacity: 1;
+    transform: rotate(0);
+    color: #0f172a;
+}
+
+.burger {
+    display: none;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background: var(--bg-surface);
+}
+
+.burger span {
+    width: 18px;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: var(--neon-cyan); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: var(--neon-cyan); }
+
+/* ---------- Mobile Drawer ---------- */
+.drawer {
+    position: fixed;
+    top: 86px;
+    right: 20px;
+    width: min(320px, calc(100vw - 40px));
+    padding: 24px;
+    z-index: 1001;
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), var(--glow-cyan);
+}
+
+.drawer.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-card);
+}
+
+.drawer-close {
+    font-size: 1.6rem;
+    color: var(--text-muted);
+    transition: var(--transition);
+    line-height: 1;
+    padding: 4px 8px;
+}
+
+.drawer-close:hover {
+    color: var(--neon-pink);
+    text-shadow: 0 0 10px var(--neon-pink);
+}
+
+.drawer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.drawer-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.drawer-link:hover,
+.drawer-link.active {
+    color: var(--neon-cyan);
+    background: rgba(0, 242, 254, 0.12);
+    border-left: 3px solid var(--neon-cyan);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+}
+
+body.light-theme .drawer-link:hover,
+body.light-theme .drawer-link.active {
+    color: var(--neon-cyan);
+    background: rgba(2, 132, 199, 0.1);
+    box-shadow: 0 0 10px rgba(2, 132, 199, 0.15);
+}
+
+.neon-num {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--neon-cyan);
+    font-weight: 700;
+}
+
+.drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 7, 16, 0.8);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.drawer-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ---------- Common Neon Glow Buttons ---------- */
+.neon-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: var(--radius-md);
+    font-family: var(--font-heading);
+    font-size: 0.98rem;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.neon-btn--primary {
+    background: linear-gradient(135deg, var(--neon-cyan) 0%, #38bdf8 50%, var(--neon-indigo) 100%);
+    color: #070913;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
+}
+
+.neon-btn--primary:hover {
+    color: #ffffff;
+    box-shadow: 0 0 40px rgba(0, 242, 254, 0.8), 0 0 60px rgba(99, 102, 241, 0.5);
+    transform: translateY(-3px) scale(1.02);
+}
+
+.neon-btn--glass {
+    background: rgba(0, 242, 254, 0.06);
+    border: 1px solid rgba(0, 242, 254, 0.4);
+    color: var(--neon-cyan);
+    box-shadow: 0 0 16px rgba(0, 242, 254, 0.15);
+}
+
+.neon-btn--glass:hover {
+    background: rgba(0, 242, 254, 0.18);
+    border-color: var(--neon-cyan);
+    color: #ffffff;
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.5);
+    transform: translateY(-3px);
+}
+
+body.light-theme .neon-btn--glass:hover {
+    color: #ffffff;
+    background: var(--neon-cyan);
+}
+
+/* ---------- Section Header ---------- */
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.section-tag--center {
+    justify-content: center;
+    margin: 0 auto 12px auto;
+}
+
+.tag-num {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: var(--neon-cyan);
+    background: rgba(0, 242, 254, 0.12);
+    padding: 3px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(0, 242, 254, 0.4);
+    box-shadow: 0 0 12px rgba(0, 242, 254, 0.25);
+}
+
+.tag-line {
+    width: 28px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--neon-cyan), transparent);
+}
+
+.tag-label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4.2vw, 3rem);
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+.neon-highlight-cyan {
+    background: linear-gradient(135deg, var(--neon-cyan), #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(0, 242, 254, 0.4));
+}
+
+body.light-theme .neon-highlight-cyan {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: none;
+}
+
+.neon-highlight-pink {
+    background: linear-gradient(135deg, #f43f5e, #fb7185);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(244, 63, 94, 0.4));
+}
+
+body.light-theme .neon-highlight-pink {
+    background: linear-gradient(135deg, #db2777, #be185d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: none;
+}
+
+.neon-highlight-lime {
+    background: linear-gradient(135deg, var(--neon-green), #34d399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(0, 245, 160, 0.4));
+}
+
+body.light-theme .neon-highlight-lime {
+    background: linear-gradient(135deg, #059669, #047857);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: none;
+}
+
+.neon-highlight-purple {
+    background: linear-gradient(135deg, var(--neon-purple), #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.4));
+}
+
+body.light-theme .neon-highlight-purple {
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: none;
+}
+
+.neon-highlight-amber {
+    background: linear-gradient(135deg, var(--neon-amber), #fbbf24);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.4));
+}
+
+body.light-theme .neon-highlight-amber {
+    background: linear-gradient(135deg, #d97706, #b45309);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: none;
+}
+
+.section-lead {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 680px;
+    line-height: 1.6;
+    margin-top: -10px;
+    margin-bottom: 36px;
+}
+
+/* ---------- Catalog Live Search & Genre Filter Bar ---------- */
+.catalog-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 36px;
+    padding: 16px 22px;
+    border-radius: var(--radius-lg);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.12);
+}
+
+.search-box-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 260px;
+    max-width: 420px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--neon-cyan);
+    pointer-events: none;
+}
+
+.catalog-search-input {
+    width: 100%;
+    padding: 11px 16px 11px 44px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    transition: var(--transition);
+}
+
+.catalog-search-input::placeholder {
+    color: var(--text-muted);
+}
+
+.catalog-search-input:focus {
+    outline: none;
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+    background: var(--bg-surface-elevated);
+}
+
+body.light-theme .catalog-search-input:focus {
+    box-shadow: 0 0 15px rgba(2, 132, 199, 0.25);
+}
+
+.catalog-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-btn {
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-btn:hover {
+    color: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    background: rgba(0, 242, 254, 0.12);
+    box-shadow: 0 0 12px rgba(0, 242, 254, 0.25);
+}
+
+body.light-theme .filter-btn:hover {
+    background: rgba(2, 132, 199, 0.08);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, var(--neon-cyan), #38bdf8);
+    border-color: var(--neon-cyan);
+    color: #070913;
+    font-weight: 900;
+    box-shadow: 0 0 18px rgba(0, 242, 254, 0.6);
+}
+
+body.light-theme .filter-btn.active {
+    color: #ffffff;
+    background: var(--neon-cyan);
+    box-shadow: 0 0 15px rgba(2, 132, 199, 0.35);
+}
+
+.catalog-item.is-hidden {
+    display: none !important;
+}
+
+.no-results-msg {
+    display: none;
+    text-align: center;
+    padding: 50px 20px;
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-lg);
+    margin-top: 20px;
+}
+
+/* ---------- Clean Footer ---------- */
+.footer {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 40px;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 30px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+}
+
+.footer-copy {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+}
+
+/* ---------- Subtle Reveal Animations ---------- */
+.anim-up,
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.anim-up {
+    animation: simpleFadeUp 0.5s ease forwards;
+}
+
+.d1 { animation-delay: 0.08s; }
+.d2 { animation-delay: 0.16s; }
+.d3 { animation-delay: 0.24s; }
+.d4 { animation-delay: 0.32s; }
+.d5 { animation-delay: 0.40s; }
+
+@keyframes simpleFadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ---------- Responsive Breakpoints (Common Layout) ---------- */
+@media (max-width: 960px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .burger {
+        display: flex;
+    }
+
+    .header-inner {
+        height: 56px;
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sec {
+        padding: 70px 0;
+    }
+
+    .catalog-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box-wrap {
+        max-width: 100%;
+    }
+
+    .footer-content {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .drawer {
+        width: calc(100vw - 32px);
+        right: 16px;
+        padding: 18px 14px;
+    }
+
+    .neon-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
